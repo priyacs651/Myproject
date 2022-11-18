@@ -21,17 +21,4 @@ public abstract class AppDataBase extends RoomDatabase {
       return appDataBase;
   }
 
-    public static class AnimalViewModel extends ViewModel {
-        public MutableLiveData<List<Animal>> animalMutableLiveData = new MutableLiveData<>();
-
-        public ArrayList<Animal> list = new ArrayList<>();
-
-        public  final AnimalRepo animalRepo = new AnimalRepo();
-        public void addAnimal(Animal animals){
-            animalRepo.addAnimal(animals);
-        }
-        public void getAnimal(){
-            animalMutableLiveData.postValue(animalRepo.getAnimal());
-        }
-     }
 }

@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeAct extends AppCompatActivity {
-    ListOfAminalsFrag frag;
-    HomeActBinding binding;
+    private ListOfAminalsFrag frag;
+    private HomeActBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.home_act);
+        binding = DataBindingUtil.setContentView(this, R.layout.home_act);
         addFragment();
         binding.imgAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,8 +35,6 @@ public class HomeAct extends AppCompatActivity {
         });
 
     }
-
-
 
     void addFragment() {
         frag = new ListOfAminalsFrag();
@@ -52,32 +50,35 @@ public class HomeAct extends AppCompatActivity {
         @NonNull
         @Override
         public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            AnimalsViewHolderBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.animals_view_holder,parent,false);
-             return new MyViewHolder(binding);
+            AnimalsViewHolderBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.animals_view_holder, parent, false);
+            return new MyViewHolder(binding);
         }
 
         @Override
         public int getItemCount() {
             return list.size();
         }
-        public void updateAnimalList(List<Animal> list){
-        this.list = list;
-        notifyDataSetChanged();
+
+        public void updateAnimalList(List<Animal> list) {
+            this.list = list;
+            notifyDataSetChanged();
         }
+
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-         holder.bind();
+            holder.bind();
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {
-             AnimalsViewHolderBinding binding;
+            AnimalsViewHolderBinding binding;
+
             public MyViewHolder(@NonNull AnimalsViewHolderBinding binding) {
                 super(binding.getRoot());
-                 this.binding = binding;
+                this.binding = binding;
             }
 
-            void bind(){
-               binding.setAnimal(list.get(getAdapterPosition()));
+            void bind() {
+                binding.setAnimal(list.get(getAdapterPosition()));
             }
         }
     }

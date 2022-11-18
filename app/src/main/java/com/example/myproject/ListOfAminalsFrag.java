@@ -19,15 +19,15 @@ import com.example.myproject.databinding.FragListOfAminalsBinding;
 import java.util.List;
 
 public class ListOfAminalsFrag extends Fragment implements MyDialogFrag.OnItemAddListener {
-     FragListOfAminalsBinding binding;
-     MyDialogFrag dialogFrag ;
-     AppDataBase.AnimalViewModel viewModel;
+     private FragListOfAminalsBinding binding;
+     private MyDialogFrag dialogFrag ;
+     private AnimalViewModel viewModel;
      HomeAct.Adapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     binding = DataBindingUtil.inflate(inflater,R.layout.frag_list_of_aminals,container,false);
-    viewModel = new ViewModelProvider(requireActivity()).get(AppDataBase.AnimalViewModel.class);
+    viewModel = new ViewModelProvider(requireActivity()).get(AnimalViewModel.class);
     initAdapter();
     initObserver();
     return binding.getRoot();
@@ -46,6 +46,7 @@ public class ListOfAminalsFrag extends Fragment implements MyDialogFrag.OnItemAd
             }
         });
      }
+
     void callDialogFrag(){
         dialogFrag = new MyDialogFrag();
         FragmentManager fragmentManager = getChildFragmentManager();
