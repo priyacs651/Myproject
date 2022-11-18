@@ -1,6 +1,7 @@
 package com.example.myproject;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,8 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHolder> {
-    List<Animal> list = new ArrayList<>();
+    private List<Animal> list = new ArrayList<>();
+    private OnItemClickListener onItemClickListener;
 
+    public AnimalAdapter(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
 
     @NonNull
     @Override
@@ -47,8 +52,18 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
         }
 
         void bind() {
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.callAnimalDetails(list.get(getAdapterPosition()));
+                }
+            });
             binding.setAnimal(list.get(getAdapterPosition()));
         }
+    }
+
+    interface OnItemClickListener{
+        void callAnimalDetails(Animal animal);
     }
 }
 

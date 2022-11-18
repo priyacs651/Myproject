@@ -36,50 +36,22 @@ public class HomeAct extends AppCompatActivity {
 
     }
 
-    void addFragment() {
+    private void addFragment() {
+        binding.tv.setText("Animals");
         frag = new ListOfAminalsFrag();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.FragemtContainer, frag).addToBackStack(null).commit();
+        transaction.add(R.id.FragemtContainer, frag).commit();
     }
 
-    public static class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
-        List<Animal> list = new ArrayList<>();
-
-
-        @NonNull
-        @Override
-        public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            AnimalsViewHolderBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.animals_view_holder, parent, false);
-            return new MyViewHolder(binding);
-        }
-
-        @Override
-        public int getItemCount() {
-            return list.size();
-        }
-
-        public void updateAnimalList(List<Animal> list) {
-            this.list = list;
-            notifyDataSetChanged();
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            holder.bind();
-        }
-
-        class MyViewHolder extends RecyclerView.ViewHolder {
-            AnimalsViewHolderBinding binding;
-
-            public MyViewHolder(@NonNull AnimalsViewHolderBinding binding) {
-                super(binding.getRoot());
-                this.binding = binding;
-            }
-
-            void bind() {
-                binding.setAnimal(list.get(getAdapterPosition()));
-            }
-        }
+    public void callShowDetailsFrag(Animal animal) {
+        binding.tv.setText("Animal Details");
+        ShowDetailsFrag showDetailsFrag = new ShowDetailsFrag();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Animal",animal);
+        showDetailsFrag.setArguments(bundle);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.FragemtContainer, showDetailsFrag).addToBackStack("AnimalDetails").commit();
     }
 }

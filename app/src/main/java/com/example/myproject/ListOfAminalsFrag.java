@@ -18,11 +18,11 @@ import com.example.myproject.databinding.FragListOfAminalsBinding;
 
 import java.util.List;
 
-public class ListOfAminalsFrag extends Fragment implements MyDialogFrag.OnItemAddListener {
+public class ListOfAminalsFrag extends Fragment implements MyDialogFrag.OnItemAddListener, AnimalAdapter.OnItemClickListener {
      private FragListOfAminalsBinding binding;
      private MyDialogFrag dialogFrag ;
      private AnimalViewModel viewModel;
-     HomeAct.Adapter adapter;
+     AnimalAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class ListOfAminalsFrag extends Fragment implements MyDialogFrag.OnItemAd
     }
 
     private void initAdapter() {
-        adapter = new HomeAct.Adapter();
+        adapter = new AnimalAdapter(this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false));
         binding.recyclerView.setAdapter(adapter);
     }
@@ -65,5 +65,10 @@ public class ListOfAminalsFrag extends Fragment implements MyDialogFrag.OnItemAd
       });
       thread.start();
 
+    }
+
+    @Override
+    public void callAnimalDetails(Animal animal) {
+        ((HomeAct)getActivity()).callShowDetailsFrag(animal);
     }
 }

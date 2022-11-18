@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/MyProject/Myproject/app/src/main/res/layout/frag_show_animals.xml" value="0.25" />
+        <entry key="..\:/MyProject/Myproject/app/src/main/res/layout/animals_view_holder.xml" value="0.22395833333333334" />
+        <entry key="..\:/MyProject/Myproject/app/src/main/res/layout/frag_list_of_aminals.xml" value="0.22395833333333334" />
+        <entry key="..\:/MyProject/Myproject/app/src/main/res/layout/frag_show_animals.xml" value="0.2" />
+        <entry key="..\:/MyProject/Myproject/app/src/main/res/layout/home_act.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/priyadharshini.v/AndroidStudioProjects/Myproject/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1" />
         <entry key="..\:/Users/priyadharshini.v/AndroidStudioProjects/Myproject/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
         <entry key="..\:/Users/priyadharshini.v/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_main.xml" value="0.15" />
