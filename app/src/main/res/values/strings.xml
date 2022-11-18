@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My project</string>
+    <string name="animals">Animals</string>
+    <string name="enter_the_name">Enter the name</string>
+    <string name="enter_the_type">Enter the type</string>
+    <string name="enter_the_description">enter the description</string>
+
+</resources>
