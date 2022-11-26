@@ -1,6 +1,7 @@
 package com.example.myproject;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -9,6 +10,10 @@ import java.util.List;
 public interface AnimalDao {
     @Insert
     void addAnimal(Animal animal);
+
     @Query("SELECT * FROM Animal")
     List<Animal> getAnimal();
+
+    @Delete
+    void deleteAnimal(Animal animal);
 }

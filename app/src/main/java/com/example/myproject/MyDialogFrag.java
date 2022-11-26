@@ -38,15 +38,9 @@ public class MyDialogFrag extends DialogFragment {
         binding.btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        model.addAnimal(binding.getAnimal());
-                    }
-                }).start();
+                model.addAnimal(binding.getAnimal());
                 dismiss();
                 onItemAddListener.onItemAdded();
-
             }
         });
 

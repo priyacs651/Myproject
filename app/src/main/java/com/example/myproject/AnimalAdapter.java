@@ -17,7 +17,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
     private List<Animal> list = new ArrayList<>();
     private OnItemClickListener onItemClickListener;
 
-    public AnimalAdapter(OnItemClickListener onItemClickListener){
+    public AnimalAdapter(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
@@ -62,8 +62,16 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
         }
     }
 
-    interface OnItemClickListener{
+
+    public void onItemRemoved(int adapterPosition) {
+        onItemClickListener.removeAnimal(list.get(adapterPosition));
+        list.remove(adapterPosition);
+        notifyItemRemoved(adapterPosition);
+        }
+
+    interface OnItemClickListener {
         void callAnimalDetails(Animal animal);
+        void removeAnimal(Animal animal);
     }
 }
 
